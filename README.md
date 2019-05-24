@@ -22,12 +22,12 @@ DIA de MES, HORA Hs.
 > Implemente un árbol BST balanceado en C. Funciones para insertar elemento, eliminar elemento, recorrer árbol (pre-order, in-order, post-order) y búsqueda. Desarrolle una aplicación de consola con un menú para las operaciones del árbol.
 
 ## Indice General
-1. [Introducción](#introduccion)
-2. [Recursos utilizados](#recursos-utilizados)
-3. [Detalles de implementación](#detalles-de-implementacion)
-4. [Conclusiones](#conclusiones)
+1. [Introducción](#1-introducción)
+2. [Recursos utilizados](#2-recursos-utilizados)
+3. [Detalles de implementación](#3-detalles-de-implementación)
+4. [Conclusiones](#4-conclusiones)
 
-5. [Referencias](#referencias)
+[Referencias](#referencias)
 
 ## 1. Introducción
 
@@ -37,4 +37,4 @@ DIA de MES, HORA Hs.
 
 ## 4. Conclusiones
 
-## 5. Referencias
+## Referencias
