@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1558825226 source:c:\users\kenny\desktop\btree\main.c
+	<stdio.h>
+	<stdlib.h>
+	"btree.h"
+
+1558825313 c:\users\kenny\desktop\btree\btree.h
+
