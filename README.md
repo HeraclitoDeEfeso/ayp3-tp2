@@ -19,7 +19,13 @@ DIA de MES, HORA Hs.
 
 ## Enunciado
 
-> Implemente un árbol BST balanceado en C. Funciones para insertar elemento, eliminar elemento, recorrer árbol (pre-order, in-order, post-order) y búsqueda. Desarrolle una aplicación de consola con un menú para las operaciones del árbol.
+> TP final parte 1: árboles BST (Binary Search Tree)
+> ---
+> Implemente un árbol BST balanceado en C. El nodo del árbol debería tener solamente valor y referencias a sus dos hijos. Investigue la teoría relacionada. Funciones para:
+>  - Insertar elemento, eliminar elemento, recorrer árbol (pre-order, in-order, post-order) y búsqueda.
+>  - Menú para las operaciones del árbol.
+>
+> *Observaciones:* El trabajo es grupal y se solicita utilizar `git`. Los commits deben ser pequeños y no uno solo con todo el trabajo. No son necesarios tests unitarios de cada función pero si incluir un ejemplo que pruebe todas las funcionalidades. Este trabajo no requiere informe. Se considera buena práctica tener el código comentado.
 
 ## Indice General
 1. [Introducción](#1-introducción)
