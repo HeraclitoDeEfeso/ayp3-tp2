@@ -1,4 +1,4 @@
-![UNTREF](https://upload.wikimedia.org/wikipedia/commons/9/96/UNTREF_Logo_2016.svg)
+![UNTREF](http://untref.edu.ar/assets/img/logo_mobile.png)
 # Ingeniería en Computación
 
 ## Algoritmos y Programación 3
