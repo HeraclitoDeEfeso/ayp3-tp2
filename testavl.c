@@ -1,5 +1,6 @@
 #include <assert.h>
 #include <stdlib.h>
+#include <stdio.h>
 #include "avl.h"
 #include <stdio.h>
 
@@ -31,7 +32,6 @@ void testBuscarUnaClave()
 //        borrar = desapilarLista(borrar);
 // }
 }
-
 
 void testBorrarLaRaizDeUnArbolConUnElemento(){
     Arbol *arbol = NULL;
@@ -124,13 +124,51 @@ void testPreOrder(){
         desapilarLista(lista);
     }
 }
+void testArbolNuloEsAvl(){
+    Arbol *arbol = NULL;
+    assert(arbol->balance <= abs(1));
+}
+void testArbolConUnElementoEsAvl(){
+    Arbol *arbol = NULL;
+    insertarArbol(arbol,5);
+    assert(arbol->balance <= abs(1));
+}
 
+void testBalanceoSimpleIzquierda(){
+    Arbol *arbol = NULL;
+    arbol = insertarArbol(arbol, 5);
+    arbol = insertarArbol(arbol, 8);
+    arbol = insertarArbol(arbol, 18);
+    assert(arbol->clave == 8);
+    assert(arbol->balance <= abs(1));
+}
+void testBalanceoSimpleDerecha(){
+    Arbol *arbol = NULL;
+    arbol = insertarArbol(arbol, 5);
+    arbol = insertarArbol(arbol, 4);
+    arbol = insertarArbol(arbol, 1);
+    assert(arbol->clave == 4);
+    assert(arbol->balance <= abs(1));
+}
 
+void testBalanceoDobleALaDerecha(){
+    Arbol *arbol = NULL;
+    arbol = insertarArbol(arbol, 18);
+    arbol = insertarArbol(arbol, 14);
+    arbol = insertarArbol(arbol, 15);
+    assert(arbol->clave == 15);
+    assert(arbol->balance <= abs(1));
+}
 
-
-
+void testBalanceoDobleALaIzquierda(){
+    Arbol *arbol = NULL;
+    arbol = insertarArbol(arbol, 8);
+    arbol = insertarArbol(arbol, 4);
+    arbol = insertarArbol(arbol, 6);
+    assert(arbol->clave == 4);
+    assert(arbol->balance <= abs(1));
+}
 int main(){
-    printf("asadas");
     testCrearUnArbol();
     testCrearUnArbolConDosNodosUnoADerecha();
     testBuscarUnaClave();
@@ -140,5 +178,11 @@ int main(){
     testInOrder();
     testPostOrder();
     testPreOrder();
+    testArbolConUnElementoEsAvl();
+    testArbolNuloEsAvl();
+    testBalanceoDobleALaDerecha();
+    testBalanceoDobleALaIzquierda();
+    testBalanceoSimpleDerecha();
+    testBalanceoSimpleIzquierda();
     return 0;
 }
