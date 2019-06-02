@@ -1,0 +1,19 @@
+# depslib dependency file v1.0
+1559489513 source:c:\users\usuario\documents\untref\ayp3\tp\avl.c
+	<stdlib.h>
+	"avl.h"
+
+1559489513 c:\users\usuario\documents\untref\ayp3\tp\avl.h
+	"lista.h"
+
+1559489513 c:\users\usuario\documents\untref\ayp3\tp\lista.h
+
+1559489513 source:c:\users\usuario\documents\untref\ayp3\tp\lista.c
+	<stdlib.h>
+	"lista.h"
+
+1559490474 source:c:\users\usuario\documents\untref\ayp3\tp\testavl.c
+	<assert.h>
+	<stdlib.h>
+	"avl.h"
+

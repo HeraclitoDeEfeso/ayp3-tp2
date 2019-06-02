@@ -1,8 +1,6 @@
 #include <assert.h>
 #include <stdlib.h>
-#include <stdio.h>
 #include "avl.h"
-#include <stdio.h>
 
 void testCrearUnArbol(){
     Arbol *arbol = NULL;
