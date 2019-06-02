@@ -16,6 +16,23 @@ Arbol *insertarArbol(Arbol *arbol, int clave)
 
 Arbol *borrarArbol(Arbol *arbol, int clave)
 {
+    Arbol **destino = &arbol;
+    int nuevaClave;
+    while (NULL != *destino && (*destino)->clave != clave)
+        destino = clave < (*destino)->clave ? &((*destino)->izquierda)
+                                          : &((*destino)->derecha);
+    if (NULL != *destino) {
+        if (NULL == (*destino)->derecha) {
+            *destino = (*destino)->izquierda;
+        }
+        else if (NULL == (*destino)->izquierda) {
+            *destino = (*destino)->derecha;
+        } else {
+            nuevaClave = buscarArbol((*destino)->izquierda, clave)->clave;
+            borrarArbol(*destino, nuevaClave);
+            (*destino)->clave = nuevaClave;
+        }
+    }
     return arbol;
 }
 
