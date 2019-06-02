@@ -29,7 +29,7 @@ void testBuscarUnaClave()
 void testBorrarLaRaizDeUnArbolConUnElemento(){
     Arbol *arbol = NULL;
     arbol = insertarArbol(arbol, 5);
-    borrarArbol(arbol, 5);
+    arbol = borrarArbol(arbol, 5);
     assert(arbol == NULL);
 }
 
@@ -37,7 +37,7 @@ void testBorrarLaRaizDeUnArbolConMasDeUnElemento(){
     Arbol *arbol = NULL;
     arbol = insertarArbol(arbol, 5);
     arbol = insertarArbol(arbol, 8);
-    borrarArbol(arbol, 5);
+    arbol = borrarArbol(arbol, 5);
     assert(arbol->clave == 8);
 }
 
@@ -46,7 +46,7 @@ void testBorrarUnElementoEnLaMitadDelArbol(){
     arbol = insertarArbol(arbol, 5);
     arbol = insertarArbol(arbol, 8);
     arbol = insertarArbol(arbol, 18);
-    borrarArbol(arbol, 8);
+    arbol = borrarArbol(arbol, 8);
     assert(buscarArbol(arbol,8) == NULL);
     assert(buscarArbol(arbol,18) != NULL);
     assert(arbol->clave == 5);
@@ -59,16 +59,14 @@ void testInOrder(){
     arbol = insertarArbol(arbol, 18);
     arbol = insertarArbol(arbol, 4);
     arbol = insertarArbol(arbol, 2);
-    enordenArbol(arbol);
-    Lista *lista ;
-    lista = postordenArbol(arbol);
+    Lista *lista = enordenArbol(arbol);
     Lista *ordenada = NULL;
     apilarLista(ordenada,(int *) 2);
     apilarLista(ordenada,(int *) 4);
     apilarLista(ordenada,(int *) 5);
     apilarLista(ordenada,(int *) 8);
     apilarLista(ordenada,(int *) 18);
-    while(ordenada){
+    while(ordenada) {
         assert(lista->dato == ordenada->dato);
         desapilarLista(ordenada);
         desapilarLista(lista);
@@ -81,9 +79,7 @@ void testPreOrder(){
     arbol = insertarArbol(arbol, 18);
     arbol = insertarArbol(arbol, 4);
     arbol = insertarArbol(arbol, 2);
-    enordenArbol(arbol);
-    Lista *lista ;
-    lista = postordenArbol(arbol);
+    Lista *lista = preordenArbol(arbol);
     Lista *ordenada = NULL;
     apilarLista(ordenada,(int *) 5);
     apilarLista(ordenada,(int *) 4);
@@ -95,16 +91,16 @@ void testPreOrder(){
         desapilarLista(ordenada);
         desapilarLista(lista);
     }
-}void testPostOrder(){
+}
+
+void testPostOrder(){
     Arbol *arbol = NULL;
     arbol = insertarArbol(arbol, 5);
     arbol = insertarArbol(arbol, 8);
     arbol = insertarArbol(arbol, 18);
     arbol = insertarArbol(arbol, 4);
     arbol = insertarArbol(arbol, 2);
-    enordenArbol(arbol);
-    Lista *lista ;
-    lista = postordenArbol(arbol);
+    Lista *lista = postordenArbol(arbol);
     Lista *ordenada = NULL;
     apilarLista(ordenada,(int *) 2);
     apilarLista(ordenada,(int *) 4);
@@ -117,14 +113,17 @@ void testPreOrder(){
         desapilarLista(lista);
     }
 }
-void testArbolNuloEsAvl(){
-    Arbol *arbol = NULL;
-    assert(arbol->balance <= abs(1));
-}
+
+// /* Arbol nulo es AVL. Error por desreferenciar un puntero nulo */
+//void testArbolNuloEsAvl(){
+//    Arbol *arbol = NULL;
+//    assert(arbol->balance <= abs(1));
+//}
+
 void testArbolConUnElementoEsAvl(){
     Arbol *arbol = NULL;
-    insertarArbol(arbol,5);
-    assert(arbol->balance <= abs(1));
+    arbol = insertarArbol(arbol,5);
+    assert(abs(arbol->balance) <= 1);
 }
 
 void testBalanceoSimpleIzquierda(){
@@ -133,7 +132,7 @@ void testBalanceoSimpleIzquierda(){
     arbol = insertarArbol(arbol, 8);
     arbol = insertarArbol(arbol, 18);
     assert(arbol->clave == 8);
-    assert(arbol->balance <= abs(1));
+    assert(abs(arbol->balance) <= 1);
 }
 void testBalanceoSimpleDerecha(){
     Arbol *arbol = NULL;
@@ -141,7 +140,7 @@ void testBalanceoSimpleDerecha(){
     arbol = insertarArbol(arbol, 4);
     arbol = insertarArbol(arbol, 1);
     assert(arbol->clave == 4);
-    assert(arbol->balance <= abs(1));
+    assert(abs(arbol->balance) <= 1);
 }
 
 void testBalanceoDobleALaDerecha(){
@@ -150,7 +149,7 @@ void testBalanceoDobleALaDerecha(){
     arbol = insertarArbol(arbol, 14);
     arbol = insertarArbol(arbol, 15);
     assert(arbol->clave == 15);
-    assert(arbol->balance <= abs(1));
+    assert(abs(arbol->balance) <= 1);
 }
 
 void testBalanceoDobleALaIzquierda(){
@@ -159,7 +158,7 @@ void testBalanceoDobleALaIzquierda(){
     arbol = insertarArbol(arbol, 4);
     arbol = insertarArbol(arbol, 6);
     assert(arbol->clave == 4);
-    assert(arbol->balance <= abs(1));
+    assert(abs(arbol->balance) <= 1);
 }
 int main(){
     testCrearUnArbol();
@@ -172,7 +171,7 @@ int main(){
     testPostOrder();
     testPreOrder();
     testArbolConUnElementoEsAvl();
-    testArbolNuloEsAvl();
+//    testArbolNuloEsAvl(); // Ver comentario en código del test
     testBalanceoDobleALaDerecha();
     testBalanceoDobleALaIzquierda();
     testBalanceoSimpleDerecha();
