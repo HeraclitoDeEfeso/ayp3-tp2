@@ -3,63 +3,29 @@
 
 Arbol *insertarArbol(Arbol *arbol, int clave)
 {
-    Arbol **destino = &arbol;
-    Lista *camino = NULL;
-    Camino *ultimo = NULL;
-    if (arbol) {
-        if (NULL == (camino = buscarArbolLista(arbol, clave, camino))) {
-            ultimo = (Camino *) camino->dato;
-            destino = &(ultimo->arbol->hijos[ultimo->hijo]);
-        }
-        if (NULL == *destino) {
-            *destino = crearArbol(clave);
-        }
-        borrarArbolLista(camino);
+    if (NULL != arbol) {
+        if (clave < arbol->clave)
+            arbol->izquierda = insertarArbol(arbol->izquierda, clave);
+        else if (clave > arbol->clave)
+            arbol->derecha = insertarArbol(arbol->derecha, clave);
+    } else {
+        arbol = crearArbol(clave);
     }
     return arbol;
 }
 
 Arbol *borrarArbol(Arbol *arbol, int clave)
 {
-    Arbol **destino = &arbol;
-    Arbol *borrar = NULL;
-    Lista *camino = NULL;
-    Camino *ultimo = NULL;
-    if (arbol) {
-        if (NULL != (camino = buscarArbolLista(arbol, clave, camino))) {
-            ultimo = (Camino *) camino->dato;
-            destino = &(ultimo->arbol->hijos[ultimo->hijo]);
-        }
-        borrar = *destino;
-        if (NULL == borrar->hijos[IZQUIERDA]) {
-            *destino = borrar->hijos[DERECHA];
-        } else if (NULL == borrar->hijos[DERECHA]) {
-            *destino = borrar->hijos[IZQUIERDA];
-        } else {
-            camino = apilarLista(camino, crearCamino(arbol, IZQUIERDA));
-            camino = buscarArbolLista(arbol->hijos[IZQUIERDA], clave, camino);
-            ultimo = (Camino *) camino->dato;
-            borrar->clave = ultimo->arbol->clave;
-            borrar = ultimo->arbol;
-            free(ultimo);
-            desapilarLista(camino);
-            ultimo = (Camino *) camino->dato;
-            ultimo->arbol->hijos[DERECHA] = borrar->hijos[IZQUIERDA];
-        }
-        free(borrar);
-        borrarArbolLista(camino);
-    }
     return arbol;
 }
 
 Arbol *buscarArbol(Arbol *arbol, int clave)
 {
-    Lista *camino = buscarArbolLista(arbol, clave, NULL);
-    Camino *ultimo = NULL;
-    if (camino) {
-        ultimo = (Camino *) camino->dato;
-        arbol = ultimo->arbol->hijos[ultimo->hijo];
-        borrarArbolLista(camino);
+    if (arbol && arbol->clave != clave) {
+        if (clave < arbol->clave)
+            arbol = buscarArbol(arbol->izquierda, clave);
+        else if (clave > arbol->clave)
+            arbol = buscarArbol(arbol->derecha, clave);
     }
     return arbol;
 }
@@ -67,15 +33,15 @@ Arbol *buscarArbol(Arbol *arbol, int clave)
 Lista *preordenArbol(Arbol *arbol)
 {
     return arbol? unirLista(unirLista(agregarLista(NULL, arbol),
-                                      preordenArbol(arbol->hijos[IZQUIERDA])),
-                                      preordenArbol(arbol->hijos[DERECHA]))
+                                      preordenArbol(arbol->izquierda)),
+                                      preordenArbol(arbol->derecha))
                 : NULL;
 }
 
 Lista *postordenArbol(Arbol *arbol)
 {
-    return arbol? unirLista(unirLista(postordenArbol(arbol->hijos[IZQUIERDA]),
-                                      postordenArbol(arbol->hijos[DERECHA])),
+    return arbol? unirLista(unirLista(postordenArbol(arbol->izquierda),
+                                      postordenArbol(arbol->derecha)),
                                       agregarLista(NULL, arbol))
                 : NULL;
 }
@@ -83,9 +49,9 @@ Lista *postordenArbol(Arbol *arbol)
 
 Lista *enordenArbol(Arbol *arbol)
 {
-    return arbol? unirLista(unirLista(enordenArbol(arbol->hijos[IZQUIERDA]),
+    return arbol? unirLista(unirLista(enordenArbol(arbol->izquierda),
                                       agregarLista(NULL, arbol)),
-                                      enordenArbol(arbol->hijos[DERECHA]))
+                                      enordenArbol(arbol->derecha))
                 : NULL;
 }
 
@@ -95,34 +61,7 @@ Arbol *crearArbol(int clave)
     Arbol *arbol = malloc(sizeof(Arbol));
     arbol->clave = clave;
     arbol->balance = 0;
-    arbol->hijos[IZQUIERDA] = NULL;
-    arbol->hijos[DERECHA] = NULL;
+    arbol->izquierda = NULL;
+    arbol->derecha = NULL;
     return arbol;
-}
-
-Lista *buscarArbolLista(Arbol *arbol, int clave, Lista *camino)
-{
-    Direccion direccion;
-    while (arbol && arbol->clave != clave) {
-        direccion = clave < arbol->clave ? IZQUIERDA : DERECHA;
-        camino = apilarLista(camino, crearCamino(arbol, direccion));
-        arbol = arbol->hijos[direccion];
-    }
-    return camino;
-}
-
-Camino *crearCamino(Arbol *arbol, Direccion hijo)
-{
-    Camino *camino = malloc(sizeof(Camino));
-    camino->arbol = arbol;
-    camino->hijo = hijo;
-    return camino;
-}
-
-void borrarArbolLista(Lista *lista)
-{
-    while (lista) {
-        free(lista->dato);
-        lista = desapilarLista(lista);
-    }
 }

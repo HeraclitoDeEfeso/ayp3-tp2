@@ -16,7 +16,8 @@
 typedef struct Arbol {
     int clave;
     int balance;
-    struct Arbol *hijos[2];
+    struct Arbol *izquierda;
+    struct Arbol *derecha;
 } Arbol;
 
 /**
@@ -35,7 +36,7 @@ typedef struct Arbol {
 Arbol *insertarArbol(Arbol *arbol, int clave);
 
 /**
- * insertarArbol() - Método para borrar una clave existente en el árbol.
+ * borrarArbol() - Método para borrar una clave existente en el árbol.
  * @arbol: árbol al que se quiere borrar la clave.
  * @clave: una clave existente en el árbol.
  *
@@ -50,12 +51,53 @@ Arbol *insertarArbol(Arbol *arbol, int clave);
  */
 Arbol *borrarArbol(Arbol *arbol, int clave);
 
+/**
+ * buscarArbol() - Método para buscar una clave existente en el árbol.
+ * @arbol: árbol en el que se quiere buscar la clave.
+ * @clave: una clave existente en el árbol.
+ *
+ * Método para buscar una clave existente en el árbol. Precondición: ninguna.
+ * Postcondicion: ninguna.
+ *
+ * Return: un Arbol que contiene la clave en su raiz o el arbol nulo si no.
+ */
 Arbol *buscarArbol(Arbol *arbol, int clave);
 
+/**
+ * preordenArbol() - El método genera una lista con recorrido pre orden del árbol.
+ * @arbol: árbol que se desea recorrer.
+ *
+ * El método genera una lista con recorrido pre orden del árbol. Precondición: ninguna.
+ * Postcondicion: se alocará memoria para una lista con cada sublista apuntando cada
+ * subarbol en recorrido "pre orden": la raiz se recorre antes que los hijos.
+ *
+ * Return: una lista. El arbol nulo devuelve una lista nula.
+ */
 Lista *preordenArbol(Arbol *arbol);
 
+/**
+ * postordenArbol() - El método genera una lista con recorrido post orden del árbol.
+ * @arbol: árbol que se desea recorrer.
+ *
+ * El método genera una lista con recorrido post orden del árbol. Precondición: ninguna.
+ * Postcondicion: se alocará memoria para una lista con cada sublista apuntando cada
+ * subarbol en recorrido "post orden": la raiz se recorre después de los hijos.
+ *
+ * Return: una lista. El arbol nulo devuelve una lista nula.
+ */
 Lista *postordenArbol(Arbol *arbol);
 
+/**
+ * preordenArbol() - El método genera una lista con recorrido en orden del árbol.
+ * @arbol: árbol que se desea recorrer.
+ *
+ * El método genera una lista con recorrido en orden del árbol. Precondición: ninguna.
+ * Postcondicion: se alocará memoria para una lista con cada sublista apuntando cada
+ * subarbol en recorrido "en orden": la raiz se recorre después del hijo con claves
+ * menores y antes del hijo con claves mayores.
+ *
+ * Return: una lista. El arbol nulo devuelve una lista nula.
+ */
 Lista *enordenArbol(Arbol *arbol);
 
 /* Tipos y métodos privados */
