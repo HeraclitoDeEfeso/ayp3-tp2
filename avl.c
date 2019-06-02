@@ -3,13 +3,15 @@
 
 Arbol *insertarArbol(Arbol *arbol, int clave)
 {
-    if (NULL != arbol) {
-        if (clave < arbol->clave)
-            arbol->izquierda = insertarArbol(arbol->izquierda, clave);
-        else if (clave > arbol->clave)
-            arbol->derecha = insertarArbol(arbol->derecha, clave);
+    Arbol **destino = &arbol;
+    if (NULL != *destino) {
+        if (clave < (*destino)->clave)
+            destino = &((*destino)->izquierda);
+        else if (clave > (*destino)->clave)
+            destino = &((*destino)->derecha);
+        *destino = insertarArbol(*destino, clave);
     } else {
-        arbol = crearArbol(clave);
+        *destino = crearArbol(clave);
     }
     return arbol;
 }
