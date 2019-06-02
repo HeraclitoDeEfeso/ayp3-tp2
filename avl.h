@@ -102,19 +102,10 @@ Lista *enordenArbol(Arbol *arbol);
 
 /* Tipos y métodos privados */
 
-typedef enum {IZQUIERDA, DERECHA} Direccion;
-
-typedef struct {
-    Arbol *arbol;
-    Direccion hijo;
-} Camino;
-
 Arbol *crearArbol(int clave);
 
-Lista *buscarArbolLista(Arbol *arbol, int clave, Lista *camino);
+int insertarArbolBalanceado(Arbol **destino, int clave);
 
-Camino *crearCamino(Arbol *arbol, Direccion hijo);
-
-void borrarArbolLista(Lista *lista);
+int balancearArbol(Arbol **destino);
 
 #endif // AVL_H_INCLUDED

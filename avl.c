@@ -3,17 +3,36 @@
 
 Arbol *insertarArbol(Arbol *arbol, int clave)
 {
-    Arbol **destino = &arbol;
+    insertarArbolBalanceado(&arbol, clave);
+    return arbol;
+}
+
+int insertarArbolBalanceado(Arbol **destino, int clave)
+{
+    int cambioAltura = 0;
     if (NULL != *destino) {
-        if (clave < (*destino)->clave)
-            destino = &((*destino)->izquierda);
-        else if (clave > (*destino)->clave)
-            destino = &((*destino)->derecha);
-        *destino = insertarArbol(*destino, clave);
+        /* Modifico mi balance con el cambio de altura pero de mi hijo */
+        if (clave < (*destino)->clave) {
+            cambioAltura = insertarArbolBalanceado(&((*destino)->izquierda), clave);
+            (*destino)->balance += cambioAltura;
+        }
+        else if (clave > (*destino)->clave) {
+            cambioAltura = insertarArbolBalanceado(&((*destino)->derecha), clave);
+            (*destino)->balance -= cambioAltura;
+        }
+        /* Calculo mi propio cambio de altura con mi balance actual:
+         * Si me balancearon, ahora destino apunta a otro nodo y perdí altura;
+         * sino y mi hijo ganó altura, yo también sólo si me desestabilicé;
+         * si en cambio mi hijo perdío altura, yo también sólo si me estabilicé
+         */
+        cambioAltura = balancearArbol(destino) ? -1                          :
+                       cambioAltura ==  1      ? (*destino)->balance != 0    :
+                       cambioAltura == -1      ? -((*destino)->balance == 0) : 0;
     } else {
         *destino = crearArbol(clave);
+        cambioAltura = 1;
     }
-    return arbol;
+    return cambioAltura;
 }
 
 Arbol *borrarArbol(Arbol *arbol, int clave)
@@ -83,4 +102,9 @@ Arbol *crearArbol(int clave)
     arbol->izquierda = NULL;
     arbol->derecha = NULL;
     return arbol;
+}
+
+int balancearArbol(Arbol **destino)
+{
+    return 0;
 }
