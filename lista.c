@@ -1,10 +1,6 @@
 #include <stdlib.h>
 #include "lista.h"
 
-/**
- * Implementación recursiva del TAD Lista
- */
-
 Lista *agregarLista(Lista *lista, void *dato)
 {
     if (lista)
