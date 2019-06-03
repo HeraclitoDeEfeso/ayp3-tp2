@@ -117,7 +117,7 @@ void testPostOrder(){
 // /* Arbol nulo es AVL. Error por desreferenciar un puntero nulo */
 //void testArbolNuloEsAvl(){
 //    Arbol *arbol = NULL;
-//    assert(arbol->balance <= abs(1));
+//    assert(abs(arbol->balance) <= 1);
 //}
 
 void testArbolConUnElementoEsAvl(){
@@ -134,6 +134,7 @@ void testBalanceoSimpleIzquierda(){
     assert(arbol->clave == 8);
     assert(abs(arbol->balance) <= 1);
 }
+
 void testBalanceoSimpleDerecha(){
     Arbol *arbol = NULL;
     arbol = insertarArbol(arbol, 5);
@@ -157,9 +158,10 @@ void testBalanceoDobleALaIzquierda(){
     arbol = insertarArbol(arbol, 8);
     arbol = insertarArbol(arbol, 4);
     arbol = insertarArbol(arbol, 6);
-    assert(arbol->clave == 4);
+    assert(arbol->clave == 6);
     assert(abs(arbol->balance) <= 1);
 }
+
 int main(){
     testCrearUnArbol();
     testCrearUnArbolConDosNodosUnoADerecha();
@@ -172,9 +174,9 @@ int main(){
     testPreOrder();
     testArbolConUnElementoEsAvl();
 //    testArbolNuloEsAvl(); // Ver comentario en código del test
+    testBalanceoSimpleIzquierda();
+    testBalanceoSimpleDerecha();
     testBalanceoDobleALaDerecha();
     testBalanceoDobleALaIzquierda();
-    testBalanceoSimpleDerecha();
-    testBalanceoSimpleIzquierda();
     return 0;
 }
