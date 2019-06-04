@@ -31,6 +31,7 @@ DIA de MES, HORA Hs.
 1. [Introducción](#1-introducción)
 2. [Recursos utilizados](#2-recursos-utilizados)
 3. [Detalles de implementación](#3-detalles-de-implementación)
+   1. [Diagrama de clases](#3i-diagrama-de-clases)
 4. [Conclusiones](#4-conclusiones)
 
 [Referencias](#referencias)
@@ -50,6 +51,10 @@ Todas estas mejoras con respecto a los árboles de búsqueda sin balancear tiene
 TODO: Detalles del entorno de programación (IDE, Compilador, plataforma). Detalles del standard C utilizado. Detalles de las normas de programación seguidas. 
 
 ## 3. Detalles de implementación
+
+### 3.i. Diagrama de clases
+
+![Diagrama de Clases](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://github.com/HeraclitoDeEfeso/ayp3-tp2/blob/master/diagrama.puml)
 
 TODO: guía para compilar y ejecutar la aplicación. Guía para compilar y ejecutar las pruebas. 
 TODO: por cada archivo "header" detallar los tipos definidos y la interfaz. Por cada "source" hacer un resumen de la implementación sólo con detalles relevantes de código.
