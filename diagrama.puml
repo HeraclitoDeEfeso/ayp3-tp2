@@ -1,0 +1,55 @@
+@startuml
+
+title Aplicación
+
+class Arbol {
+    int clave
+    int balance
+    Arbol* izquierda
+    Arbol* derecha
+    Arbol* insertarArbol(Arbol*, int)
+    Arbol* borrarArbol(Arbol*, int)
+    Arbol* buscarArbol(Arbol*, int)
+    Lista* preordenArbol(Arbol*)
+    Lista* postordenArbol(Arbol*)
+    Lista* enordenArbol(Arbol*)
+    -Arbol* crearArbol(int)
+    -int insertarArbolBalanceado(Arbol**, int)
+    -int balancearArbol(Arbol**)
+    -void rotarDerecha(Arbol**)
+    -void rotarIzquierda(Arbol**)
+    -Arbol* buscarMaximo(Arbol*)
+}
+
+class Lista {
+    void* dato
+    Lista* siguiente
+    Lista* agregarLista(Lista*, void*)
+    Lista* apilarLista(Lista*, void*)
+    Lista* desapilarLista(Lista*)
+    Lista* unirLista(Lista*, Lista*)
+    void borrarLista(Lista*)
+    -Lista* crearLista(void*, Lista*)
+}
+
+class Menu {
+    char* titulo
+    char** opciones
+    int dimension
+    Menu* crearMenu(char*, char**, int)
+    int activarMenu(Menu*)
+}
+
+class Aplicacion <<utility>> {
+    {static} int main()
+}
+
+Arbol "2" *-- Arbol
+Lista "*" <-left- Arbol
+Menu <.up. Aplicacion
+Arbol <.up. Aplicacion
+Lista <.up. Aplicacion
+
+hide <<utility>> circle
+
+@enduml
