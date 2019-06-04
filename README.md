@@ -54,7 +54,7 @@ TODO: Detalles del entorno de programación (IDE, Compilador, plataforma). Detal
 
 ### 3.i. Diagrama de clases
 
-![Diagrama de Clases](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://github.com/HeraclitoDeEfeso/ayp3-tp2/blob/master/diagrama.puml)
+![Diagrama de Clases](http://www.plantuml.com/plantuml/png/1S713K8n203GLVm3-4dqvbaJrw0jjYGWXCB1xNtlu6-N6bGXbvNf-m4mELUrivl2cmAxSDgJNX_Q1lZp-pNz1asiWU9E2XYCCr3nz5Bv0m00)
 
 TODO: guía para compilar y ejecutar la aplicación. Guía para compilar y ejecutar las pruebas. 
 TODO: por cada archivo "header" detallar los tipos definidos y la interfaz. Por cada "source" hacer un resumen de la implementación sólo con detalles relevantes de código.
