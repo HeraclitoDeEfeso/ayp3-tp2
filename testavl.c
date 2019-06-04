@@ -114,12 +114,6 @@ void testPostOrder(){
     }
 }
 
-// /* Arbol nulo es AVL. Error por desreferenciar un puntero nulo */
-//void testArbolNuloEsAvl(){
-//    Arbol *arbol = NULL;
-//    assert(abs(arbol->balance) <= 1);
-//}
-
 void testArbolConUnElementoEsAvl(){
     Arbol *arbol = NULL;
     arbol = insertarArbol(arbol,5);
@@ -162,6 +156,57 @@ void testBalanceoDobleALaIzquierda(){
     assert(abs(arbol->balance) <= 1);
 }
 
+void testBalanceoaLaDerechaDespuesDeBorrar(){
+    Arbol *arbol = NULL;
+    arbol = insertarArbol(arbol, 8);
+    arbol = insertarArbol(arbol, 4);
+    arbol = insertarArbol(arbol, 9);
+    arbol = insertarArbol(arbol, 3);/*hasta aca esta balanceado*/
+    arbol = borrarArbol(arbol, 9);
+    assert(arbol->clave == 4);
+    assert(arbol->derecha == 8);
+    assert(arbol->izquierda == 3);
+    assert(abs(arbol->balance) <= 1);
+}
+
+void testBalanceoaLaIzquierdaDespuesDeBorrar(){
+    Arbol *arbol = NULL;
+    arbol = insertarArbol(arbol, 8);
+    arbol = insertarArbol(arbol, 4);
+    arbol = insertarArbol(arbol, 9);
+    arbol = insertarArbol(arbol, 11);/*hasta aca esta balanceado*/
+    arbol = borrarArbol(arbol, 4);
+    assert(arbol->clave == 9);
+    assert(arbol->derecha == 11);
+    assert(arbol->izquierda == 8);
+    assert(abs(arbol->balance) <= 1);
+}
+
+void testBalanceoDobleALaIzquierdaDespuesDeBorrar(){
+    Arbol *arbol = NULL;
+    arbol = insertarArbol(arbol, 8);
+    arbol = insertarArbol(arbol, 4);
+    arbol = insertarArbol(arbol,13);
+    arbol = insertarArbol(arbol, 11);/*hasta aca esta balanceado*/
+    arbol = borrarArbol(arbol, 4);
+    assert(arbol->clave == 8);
+    assert(arbol->derecha == 13);
+    assert(arbol->izquierda == 11);
+    assert(abs(arbol->balance) <= 1);
+}
+void testBalanceoDobleALaDerechaDespuesDeBorrar(){
+    Arbol *arbol = NULL;
+    arbol = insertarArbol(arbol, 8);
+    arbol = insertarArbol(arbol, 4);
+    arbol = insertarArbol(arbol,13);
+    arbol = insertarArbol(arbol, 5);/*hasta aca esta balanceado*/
+    arbol = borrarArbol(arbol, 13);
+    assert(arbol->clave == 5);
+    assert(arbol->derecha == 8);
+    assert(arbol->izquierda == 4);
+    assert(abs(arbol->balance) <= 1);
+}
+
 int main(){
     testCrearUnArbol();
     testCrearUnArbolConDosNodosUnoADerecha();
@@ -173,10 +218,13 @@ int main(){
     testPostOrder();
     testPreOrder();
     testArbolConUnElementoEsAvl();
-//    testArbolNuloEsAvl(); // Ver comentario en código del test
     testBalanceoSimpleIzquierda();
     testBalanceoSimpleDerecha();
     testBalanceoDobleALaDerecha();
     testBalanceoDobleALaIzquierda();
+    testBalanceoaLaDerechaDespuesDeBorrar();
+    testBalanceoaLaIzquierdaDespuesDeBorrar();
+    testBalanceoDobleALaDerechaDespuesDeBorrar();
+    testBalanceoDobleALaIzquierdaDespuesDeBorrar();
     return 0;
 }
