@@ -31,6 +31,13 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="app.c">
+			<Option compilerVar="CC" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="app.h">
+			<Option target="Release" />
+		</Unit>
 		<Unit filename="avl.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -39,6 +46,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="lista.h" />
+		<Unit filename="menu.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="menu.h" />
 		<Unit filename="testavl.c">
 			<Option compilerVar="CC" />
 			<Option target="Debug" />
