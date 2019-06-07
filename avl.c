@@ -9,23 +9,7 @@ Arbol *insertarArbol(Arbol *arbol, int clave)
 
 Arbol *borrarArbol(Arbol *arbol, int clave)
 {
-    Arbol **destino = &arbol;
-    int nuevaClave;
-    while (NULL != *destino && (*destino)->clave != clave)
-        destino = clave < (*destino)->clave ? &((*destino)->izquierda)
-                                          : &((*destino)->derecha);
-    if (NULL != *destino) {
-        if (NULL == (*destino)->derecha) {
-            *destino = (*destino)->izquierda;
-        }
-        else if (NULL == (*destino)->izquierda) {
-            *destino = (*destino)->derecha;
-        } else {
-            nuevaClave = buscarMaximo((*destino)->izquierda)->clave;
-            borrarArbol(*destino, nuevaClave);
-            (*destino)->clave = nuevaClave;
-        }
-    }
+    borrarArbolBalanceado(&arbol, clave);
     return arbol;
 }
 
@@ -55,7 +39,6 @@ Lista *postordenArbol(Arbol *arbol)
                                       agregarLista(NULL, arbol))
                 : NULL;
 }
-
 
 Lista *enordenArbol(Arbol *arbol)
 {
@@ -88,14 +71,9 @@ int insertarArbolBalanceado(Arbol **destino, int clave)
             cambioAltura = insertarArbolBalanceado(&((*destino)->derecha), clave);
             (*destino)->balance -= cambioAltura;
         }
-        /* Calculo mi propio cambio de altura con mi balance actual:
-         * Si me balancearon, ahora destino apunta a otro nodo y perdí altura;
-         * sino y mi hijo ganó altura, yo también sólo si me desestabilicé;
-         * si en cambio mi hijo perdío altura, yo también sólo si me estabilicé
-         */
-        cambioAltura = balancearArbol(destino) ? -1                          :
-                       cambioAltura ==  1      ? (*destino)->balance != 0    :
-                       cambioAltura == -1      ? -((*destino)->balance == 0) : 0;
+        balancearArbol(destino);
+        /* Cambio de altura si me desbalancea un hijo */
+        cambioAltura = (*destino)->balance != 0 && cambioAltura != 0;
     } else {
         *destino = crearArbol(clave);
         cambioAltura = 1;
@@ -103,9 +81,41 @@ int insertarArbolBalanceado(Arbol **destino, int clave)
     return cambioAltura;
 }
 
-int balancearArbol(Arbol **destino)
+int borrarArbolBalanceado(Arbol **destino, int clave)
 {
-    int balanceado = 1;
+    int cambioAltura = 0;
+    int nuevaClave;
+    if (NULL != *destino) {
+        if ((*destino)->clave != clave) {
+            /* Modifico mi balance con el cambio de altura pero de mi hijo */
+            if ((*destino)->clave > clave) {
+                cambioAltura = borrarArbolBalanceado(&((*destino)->izquierda), clave);
+                (*destino)->balance += cambioAltura;
+            } else {
+                cambioAltura = borrarArbolBalanceado(&((*destino)->derecha), clave);
+                (*destino)->balance -= cambioAltura;
+            }
+            balancearArbol(destino);
+            /* Cambio de altura si me balanceo por mi hijo */
+            cambioAltura = -((*destino)->balance == 0 && cambioAltura != 0);
+        } else if (NULL == (*destino)->derecha) {
+            *destino = (*destino)->izquierda;
+            cambioAltura = -1;
+        }
+        else if (NULL == (*destino)->izquierda) {
+            *destino = (*destino)->derecha;
+            cambioAltura = -1;
+        } else {
+            nuevaClave = buscarMaximo((*destino)->izquierda);
+            cambioAltura = borrarArbolBalanceado(destino, nuevaClave);
+            (*destino)->clave = nuevaClave;
+        }
+    }
+    return cambioAltura;
+}
+
+void balancearArbol(Arbol **destino)
+{
     if ((*destino)->balance == -2) {
         if ((*destino)->derecha->balance == 1) {
             rotarIzquierda(&((*destino)->derecha));
@@ -116,19 +126,16 @@ int balancearArbol(Arbol **destino)
             rotarDerecha(&((*destino)->izquierda));
         }
         rotarIzquierda(destino);
-    } else {
-        balanceado = 0;
     }
-    return balanceado;
 }
 
 void rotarDerecha(Arbol **arbol)
 {
     Arbol *nuevaRaiz = (*arbol)->derecha;
     (*arbol)->derecha = nuevaRaiz->izquierda;
-    (*arbol)->balance++;
+    (*arbol)->balance += 2;
     nuevaRaiz->izquierda = *arbol;
-    nuevaRaiz->balance++;
+    nuevaRaiz->balance += 1;
     *arbol = nuevaRaiz;
 }
 
@@ -136,15 +143,15 @@ void rotarIzquierda(Arbol **arbol)
 {
     Arbol *nuevaRaiz = (*arbol)->izquierda;
     (*arbol)->izquierda = nuevaRaiz->derecha;
-    (*arbol)->balance--;
+    (*arbol)->balance -= 2;
     nuevaRaiz->derecha = *arbol;
-    nuevaRaiz->balance--;
+    nuevaRaiz->balance -= 1;
     *arbol = nuevaRaiz;
 }
 
-Arbol *buscarMaximo(Arbol *arbol)
+int buscarMaximo(Arbol *arbol)
 {
     while (NULL != arbol->derecha)
         arbol = arbol->derecha;
-    return arbol;
+    return arbol->clave;
 }

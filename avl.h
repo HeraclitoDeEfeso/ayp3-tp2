@@ -134,18 +134,33 @@ Arbol *crearArbol(int clave);
 int insertarArbolBalanceado(Arbol **destino, int clave);
 
 /**
+ * borrarArbolBalanceado() - Borrado balanceado.
+ * @destino: arista al subárbol del que se desea borrar la clave.
+ * @clave: clave que se desea borrar.
+ *
+ * Método que realiza el borrado balanceado de la @clave en el subárbol al
+ * que conduce la arista @destino. Precondición: ninguna.
+ * Postcondicion: es posible que se desaloque memoria para un árbol unitario;
+ * es posible que se modifiquen aristas del árbol para que esté balanceado y
+ * se alteren los factores de equilibrio de varios subárboles; puede cambiar
+ * el subárbol al que conduce la arista @destino.
+ *
+ * Return: el cambio relativo entre la altura del árbol al que conducía la
+ *.        arista @destino y la altura del árbol al que conduce ahora.
+ */
+int borrarArbolBalanceado(Arbol **destino, int clave);
+
+/**
  * balancearArbol() - Método para balancear un árbol.
  * @destino: arista al subárbol que se desea balancear.
  *
  * Método para balancear un árbol según su factor de equilibrio. Precondición:
  * la arista @destino no conduce a un árbol nulo. Postcondicion: es posible
  * que se modifiquen aristas del árbol para que esté balanceado y se alteren
- * los factores de equilibrio de varios subárboles; puede cambiar el subárbol
+ * los factores de equilibrio de los subárboles; puede cambiar el subárbol
  * al que conduce la arista @destino.
- *
- * Return: un valor booleano indicando si se balanceo.
- */
-int balancearArbol(Arbol **destino);
+*/
+void balancearArbol(Arbol **destino);
 
 /**
  * rotarDerecha() - Cambia la raíz de un árbol por la del subárbol derecho.
@@ -178,8 +193,8 @@ void rotarIzquierda(Arbol **arbol);
  * Método hallar el máximo valor de la clave en un árbol. Precondición:
  * el árbol no debe ser nulo. Postcondicion: ninguna.
  *
- * Return: el subárbol cuya raíz contiene a la máxima clave del @arbol.
+ * Return: la máxima clave del @arbol.
  */
-Arbol *buscarMaximo(Arbol *arbol);
+int buscarMaximo(Arbol *arbol);
 
 #endif // AVL_H_INCLUDED
