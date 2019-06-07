@@ -7,9 +7,9 @@ Arbol *insertarArbol(Arbol *arbol, int clave)
     return arbol;
 }
 
-Arbol *borrarArbol(Arbol *arbol, int clave)
+Arbol *eliminarArbol(Arbol *arbol, int clave)
 {
-    borrarArbolBalanceado(&arbol, clave);
+    eliminarArbolBalanceado(&arbol, clave);
     return arbol;
 }
 
@@ -81,7 +81,7 @@ int insertarArbolBalanceado(Arbol **destino, int clave)
     return cambioAltura;
 }
 
-int borrarArbolBalanceado(Arbol **destino, int clave)
+int eliminarArbolBalanceado(Arbol **destino, int clave)
 {
     int cambioAltura = 0;
     int nuevaClave;
@@ -89,10 +89,10 @@ int borrarArbolBalanceado(Arbol **destino, int clave)
         if ((*destino)->clave != clave) {
             /* Modifico mi balance con el cambio de altura pero de mi hijo */
             if ((*destino)->clave > clave) {
-                cambioAltura = borrarArbolBalanceado(&((*destino)->izquierda), clave);
+                cambioAltura = eliminarArbolBalanceado(&((*destino)->izquierda), clave);
                 (*destino)->balance += cambioAltura;
             } else {
-                cambioAltura = borrarArbolBalanceado(&((*destino)->derecha), clave);
+                cambioAltura = eliminarArbolBalanceado(&((*destino)->derecha), clave);
                 (*destino)->balance -= cambioAltura;
             }
             balancearArbol(destino);
@@ -107,7 +107,7 @@ int borrarArbolBalanceado(Arbol **destino, int clave)
             cambioAltura = -1;
         } else {
             nuevaClave = buscarMaximo((*destino)->izquierda);
-            cambioAltura = borrarArbolBalanceado(destino, nuevaClave);
+            cambioAltura = eliminarArbolBalanceado(destino, nuevaClave);
             (*destino)->clave = nuevaClave;
         }
     }

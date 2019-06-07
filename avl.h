@@ -49,7 +49,7 @@ Arbol *insertarArbol(Arbol *arbol, int clave);
  *
  * Return: un Arbol que no contiene la clave.
  */
-Arbol *borrarArbol(Arbol *arbol, int clave);
+Arbol *eliminarArbol(Arbol *arbol, int clave);
 
 /**
  * buscarArbol() - Método para buscar una clave existente en el árbol.
@@ -148,7 +148,7 @@ int insertarArbolBalanceado(Arbol **destino, int clave);
  * Return: el cambio relativo entre la altura del árbol al que conducía la
  *.        arista @destino y la altura del árbol al que conduce ahora.
  */
-int borrarArbolBalanceado(Arbol **destino, int clave);
+int eliminarArbolBalanceado(Arbol **destino, int clave);
 
 /**
  * balancearArbol() - Método para balancear un árbol.

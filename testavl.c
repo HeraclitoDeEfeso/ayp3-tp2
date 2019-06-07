@@ -77,7 +77,7 @@ void testBorrarLaRaizDeUnArbolConUnElemento()
     Arbol *arbol = NULL;
     arbol = insertarArbol(arbol, 5);
     assert(esAVL(arbol));
-    arbol = borrarArbol(arbol, 5);
+    arbol = eliminarArbol(arbol, 5);
     assert(esAVL(arbol));
     assert(arbol == NULL);
 }
@@ -89,7 +89,7 @@ void testBorrarLaRaizDeUnArbolConMasDeUnElemento()
     assert(esAVL(arbol));
     arbol = insertarArbol(arbol, 8);
     assert(esAVL(arbol));
-    arbol = borrarArbol(arbol, 5);
+    arbol = eliminarArbol(arbol, 5);
     assert(esAVL(arbol));
     assert(arbol->clave == 8);
 }
@@ -103,7 +103,7 @@ void testBorrarUnElementoEnLaMitadDelArbol()
     assert(esAVL(arbol));
     arbol = insertarArbol(arbol, 18);
     assert(esAVL(arbol));
-    arbol = borrarArbol(arbol, 8);
+    arbol = eliminarArbol(arbol, 8);
     assert(esAVL(arbol));
     assert(buscarArbol(arbol, 8) == NULL);
     assert(buscarArbol(arbol, 18) != NULL);
@@ -257,7 +257,7 @@ void testBalanceoaLaDerechaDespuesDeBorrar()
     assert(esAVL(arbol));
     arbol = insertarArbol(arbol, 3);/*hasta aca esta balanceado*/
     assert(esAVL(arbol));
-    arbol = borrarArbol(arbol, 9);
+    arbol = eliminarArbol(arbol, 9);
     assert(arbol->clave == 4);
     assert(arbol->derecha->clave == 8);
     assert(arbol->izquierda->clave == 3);
@@ -275,7 +275,7 @@ void testBalanceoaLaIzquierdaDespuesDeBorrar()
     assert(esAVL(arbol));
     arbol = insertarArbol(arbol, 11);/*hasta aca esta balanceado*/
     assert(esAVL(arbol));
-    arbol = borrarArbol(arbol, 4);
+    arbol = eliminarArbol(arbol, 4);
     assert(arbol->clave == 9);
     assert(arbol->derecha->clave == 11);
     assert(arbol->izquierda->clave == 8);
@@ -293,7 +293,7 @@ void testBalanceoDobleALaIzquierdaDespuesDeBorrar()
     assert(esAVL(arbol));
     arbol = insertarArbol(arbol, 11);/*hasta aca esta balanceado*/
     assert(esAVL(arbol));
-    arbol = borrarArbol(arbol, 4);
+    arbol = eliminarArbol(arbol, 4);
     assert(arbol->clave == 11);
     assert(arbol->derecha->clave == 13);
     assert(arbol->izquierda->clave == 8);
@@ -311,7 +311,7 @@ void testBalanceoDobleALaDerechaDespuesDeBorrar()
     assert(esAVL(arbol));
     arbol = insertarArbol(arbol, 5);/*hasta aca esta balanceado*/
     assert(esAVL(arbol));
-    arbol = borrarArbol(arbol, 13);
+    arbol = eliminarArbol(arbol, 13);
     assert(arbol->clave == 5);
     assert(arbol->derecha->clave == 8);
     assert(arbol->izquierda->clave == 4);
@@ -326,7 +326,7 @@ void testBorradoPrecisaDobleBalanceo()
         arbol = insertarArbol(arbol, numeros[i]);
         assert(esAVL(arbol));
     }
-    arbol = borrarArbol(arbol, 15);
+    arbol = eliminarArbol(arbol, 15);
     assert(esAVL(arbol));
     assert(arbol->clave == 60);
 }
