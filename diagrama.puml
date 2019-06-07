@@ -15,10 +15,11 @@ class Arbol {
     Lista* enordenArbol(Arbol*)
     -Arbol* crearArbol(int)
     -int insertarArbolBalanceado(Arbol**, int)
+    -int borrarArbolBalanceado(Arbol**, int)
     -int balancearArbol(Arbol**)
     -void rotarDerecha(Arbol**)
     -void rotarIzquierda(Arbol**)
-    -Arbol* buscarMaximo(Arbol*)
+    -int buscarMaximo(Arbol*)
 }
 
 class Lista {
@@ -42,6 +43,7 @@ class Menu {
 
 class Aplicacion <<utility>> {
     {static} int main()
+    {static} int solicitarClave()
 }
 
 Arbol "2" *-- Arbol
