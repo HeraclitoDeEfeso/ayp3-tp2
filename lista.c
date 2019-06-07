@@ -6,7 +6,7 @@ Lista *agregarLista(Lista *lista, void *dato)
     if (lista)
         lista->siguiente = agregarLista(lista->siguiente, dato);
     else
-        lista = crearLista(dato, NULL);
+        lista = crearLista(dato, lista);
     return lista;
 }
 
