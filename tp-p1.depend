@@ -1,19 +1,29 @@
 # depslib dependency file v1.0
-1559600464 source:c:\users\usuario\documents\untref\ayp3\tp\avl.c
+1559937670 source:c:\users\usuario\documents\untref\ayp3\tp\app.c
+	<stdio.h>
+	"menu.h"
+	"avl.h"
+	"app.h"
+
+1558475156 c:\users\usuario\documents\untref\ayp3\tp\menu.h
+
+1559936994 c:\users\usuario\documents\untref\ayp3\tp\avl.h
+	"lista.h"
+
+1559939354 c:\users\usuario\documents\untref\ayp3\tp\lista.h
+
+1559937625 c:\users\usuario\documents\untref\ayp3\tp\app.h
+
+1559936994 source:c:\users\usuario\documents\untref\ayp3\tp\avl.c
 	<stdlib.h>
 	"avl.h"
 
-1559601291 c:\users\usuario\documents\untref\ayp3\tp\avl.h
-	"lista.h"
-
-1559495912 c:\users\usuario\documents\untref\ayp3\tp\lista.h
-
-1559495912 source:c:\users\usuario\documents\untref\ayp3\tp\lista.c
+1559937985 source:c:\users\usuario\documents\untref\ayp3\tp\lista.c
 	<stdlib.h>
 	"lista.h"
 
-1559596470 source:c:\users\usuario\documents\untref\ayp3\tp\testavl.c
-	<assert.h>
+1558475156 source:c:\users\usuario\documents\untref\ayp3\tp\menu.c
+	<stdio.h>
 	<stdlib.h>
-	"avl.h"
+	"menu.h"
 
