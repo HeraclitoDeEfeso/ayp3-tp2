@@ -8,14 +8,14 @@ class Arbol {
     Arbol* izquierda
     Arbol* derecha
     Arbol* insertarArbol(Arbol*, int)
-    Arbol* borrarArbol(Arbol*, int)
+    Arbol* eliminarArbol(Arbol*, int)
     Arbol* buscarArbol(Arbol*, int)
     Lista* preordenArbol(Arbol*)
     Lista* postordenArbol(Arbol*)
     Lista* enordenArbol(Arbol*)
     -Arbol* crearArbol(int)
     -int insertarArbolBalanceado(Arbol**, int)
-    -int borrarArbolBalanceado(Arbol**, int)
+    -int eliminarArbolBalanceado(Arbol**, int)
     -int balancearArbol(Arbol**)
     -void rotarDerecha(Arbol**)
     -void rotarIzquierda(Arbol**)
@@ -44,6 +44,7 @@ class Menu {
 class Aplicacion <<utility>> {
     {static} int main()
     {static} int solicitarClave()
+    {static} void mostrarRecorrido(Lista*)
 }
 
 Arbol "2" *-- Arbol
