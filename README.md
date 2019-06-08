@@ -1,4 +1,5 @@
-![UNTREF](http://untref.edu.ar/assets/img/logo_mobile.png)
+﻿![UNTREF](http://untref.edu.ar/assets/img/logo_mobile.png)
+
 # Ingeniería en Computación
 
 ## Algoritmos y Programación 3
@@ -48,7 +49,11 @@ Todas estas mejoras con respecto a los árboles de búsqueda sin balancear tiene
 
 ## 2. Recursos utilizados
 
-TODO: Detalles del entorno de programación (IDE, Compilador, plataforma). Detalles del standard C utilizado. Detalles de las normas de programación seguidas. 
+Para nuestro desarrollo hemos utilizida el Entorno de Desarrollo Integrado (IDE) Code::Blocks<a name="cita-3" href="#ref-3"><sup>[3]</sup></a>
+para el sistema operativo Windows y con un compilador portado del GCC de GNU aportado por el proyecto de entorno de desarrollo MinGW<a name="cita-4" href="#ref-4"><sup>[4]</sup></a>. 
+
+En cuanto al lenguage C propiamente, hemos utilizado sólo las características y sintaxis del ANSI C89/ ISO C90 adhiriendo en lo posible al estilo de codificación del kernel de Linux<a name="cita-5" href="#ref-5"><sup>[5]</sup></a> 
+y su guía para la documentación<a name="cita-6" href="#ref-6"><sup>[6]</sup></a>. 
 
 ## 3. Detalles de implementación
 
@@ -64,8 +69,15 @@ TODO: por cada archivo "header" detallar los tipos definidos y la interfaz. Por 
 TODO: Crítica sobre las herramientas utilizadad. Detallar particularidades de la implementación del Arbol B+ en C (posibilidad de comparación con nuestra implementación en python)
 
 ## Referencias
-TODO: enlaces de las herramientas y de las guías de normas de programación.
 
 <a name="ref-1" href="#cita-1"><sup>[1]</sup></a> Adelson-Velsky, Georgy; Landis, Evgenii (1962). "An algorithm for the organization of information". Proceedings of the USSR Academy of Sciences (in Russian). 146: 263–266
 
 <a name="ref-2" href="#cita-2"><sup>[2]</sup></a> Knuth, Donald E. (2000). Sorting and searching (2. ed., 6. printing, newly updated and rev. ed.). Boston [u.a.]: Addison-Wesley. pp. 458–481
+
+<a name="ref-3" href="#cita-3"><sup>[3]</sup></a> "The open source, cross platform, free C, C++ and Fortran IDE", recuperado de www.codeblocks.org
+
+<a name="ref-4" href="#cita-4"><sup>[4]</sup></a> "Minimalist GNU for Windows", recuperado de www.mingw.org
+
+<a name="ref-5" href="#cita-5"><sup>[5]</sup></a> "Linux kernel coding style", recuperado de http://www.kernel.org/doc/html/v4.10/process/coding-style.html
+
+<a name="ref-6" href="#cita-6"><sup>[6]</sup></a> "Writing kernel-doc comments", recuperado de http://www.kernel.org/doc/html/v4.10/doc-guide/kernel-doc.html
