@@ -11,7 +11,7 @@
   * Araneda Alejandro - eloscurodeefeso@gmail.com
 
 Trabajo Práctico entregado el:  
-DIA de MES, HORA Hs.  
+6 de junio  
 1ro Cuatrimestre de 2019
 
 #### Docentes:
