@@ -33,6 +33,8 @@ DIA de MES, HORA Hs.
 2. [Recursos utilizados](#2-recursos-utilizados)
 3. [Detalles de implementación](#3-detalles-de-implementación)
    1. [Diagrama de clases](#3i-diagrama-de-clases)
+   2. [Guía de compilación](#3ii-guía-de-compilación)
+   3. [Guía de compilación](#3iii-detalles-de-implementación)
 4. [Conclusiones](#4-conclusiones)
 
 [Referencias](#referencias)
@@ -61,12 +63,62 @@ y su guía para la documentación<a name="cita-6" href="#ref-6"><sup>[6]</sup></
 
 ![Diagrama de Clases](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/HeraclitoDeEfeso/ayp3-tp2/master/diagrama.puml)
 
-TODO: guía para compilar y ejecutar la aplicación. Guía para compilar y ejecutar las pruebas. 
-TODO: por cada archivo "header" detallar los tipos definidos y la interfaz. Por cada "source" hacer un resumen de la implementación sólo con detalles relevantes de código.
+### 3.ii. Guía de Compilación
 
-## 4. Conclusiones
+Para compilar y correr los test en Code::Blocks abrir el proyecto `tp-p1.cbp` y seleccionar en la lista de "build target" la configuración `"Debug"` y presionar <kbd>F9</kbd>:
 
-TODO: Crítica sobre las herramientas utilizadad. Detallar particularidades de la implementación del Arbol B+ en C (posibilidad de comparación con nuestra implementación en python)
+![Debug buil target](Debug.png)
+
+Para compilar y correr la aplicación en Code::Blocks abrir el proyecto "tp-p1.cbp" y seleccionar en la lista de "build target" la configuración `"Release"` y presionar <kbd>F9</kbd>:
+
+![Release buil target](Release.png)
+
+### 3.iii. Detalles de implementación
+
+#### Archivo [`app.h`](app.h)
+
+El archivo `app.h` contiene la interfaz de la aplicación con las funciones y módulos auxiliares 
+con la interfaz de usuario para solicitar claves para luego insertar, borrar o buscar, o para
+mostrar un recorrido del arbol.
+
+#### Archivo [`app.c`](app.c)
+
+El archivo `app.c` contiene la implementación de la aplicación y de las funciones y módulos auxiliares
+
+#### Archivo [`avl.h`](avl.h)
+
+El archivo `avl.h` contiene la interfaz del TAD Árbol AVL, con la definición de tipo `Arbol` y sus métodos 
+público y privados. Se hace uso del TAD de Lista para los resultados de los recorridos. 
+
+#### Archivo [`avl.c`](avl.c)
+
+El archivo `avl.c` contiene la implementación del TAD Árbol AVL, tanto sus métodos 
+público como privados. Se hace uso del TAD de Lista para devolver los recorridos. 
+
+#### Archivo [`lista.h`](lista.h)
+
+El archivo `lista.h` contiene la interfaz de un TAD Lista genérico, con la definición de tipo `Lista` 
+y sus métodos público y privados.
+
+#### Archivo [`lista.c`](lista.c)
+
+El archivo `lista.c` contiene la implementación del TAD Lista en estilo recursivo, tanto 
+sus métodos público como privados.
+
+#### Archivo [`menu.h`](menu.h)
+
+El archivo `menu.h` contiene la interfaz de un TAD Menu, con la definición de tipo `Menu` 
+y sus métodos todos públicos. 
+
+#### Archivo [`menu.c`](menu.c)
+
+El archivo `menu.c` contiene la implementación del TAD Menu, que encapsulará la interfaz con el usuario
+y la validación de datos.
+
+#### Archivo [`testavl.c`](testavl.c)
+
+El archivo `testavl.c` contiene los test unitarios del TAD Árbol AVL. Consideramos ya testeados en las 
+ejercicios anteriores los otros Tipos Abstractos de Datos usados. No se ha utilizado un framework. 
 
 ## Referencias
 
