@@ -118,11 +118,13 @@ void balancearArbol(Arbol **destino)
 {
     if ((*destino)->balance == -2) {
         if ((*destino)->derecha->balance == 1) {
+            (*destino)->derecha->balance += 1;
             rotarIzquierda(&((*destino)->derecha));
         }
         rotarDerecha(destino);
     } else if ((*destino)->balance == 2) {
         if ((*destino)->izquierda->balance == -1) {
+            (*destino)->derecha->balance -= 1;
             rotarDerecha(&((*destino)->izquierda));
         }
         rotarIzquierda(destino);
