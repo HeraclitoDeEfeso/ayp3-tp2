@@ -27,3 +27,9 @@
 	<stdlib.h>
 	"menu.h"
 
+1559935222 source:c:\users\usuario\documents\untref\ayp3\tp\testavl.c
+	<assert.h>
+	<stdlib.h>
+	<stdio.h>
+	"avl.h"
+
